@@ -17,23 +17,19 @@ function syncShortlistWithProperties(){
 }
 function updateShortlistCount(){shortlistCount.textContent=shortlisted.length}
 async function loadPublic(){
-  // Firebase is optional for the local/demo version. If it is not configured,
-  // immediately use the bundled sample properties instead of leaving the page stuck loading.
   if(!window.ANANYA_FIREBASE?.ready){
-    properties = getProperties().filter(p => p.status === "available" || !p.status);
+    properties=[];
     syncShortlistWithProperties();
     render();
     return;
   }
   try{
     properties=await cloudGetAvailableProperties();
-    // If Firestore is connected but has no listings yet, keep the public site useful for testing.
-    if(!properties.length) properties=getProperties().filter(p => p.status === "available" || !p.status);
     syncShortlistWithProperties();
     render();
   }catch(e){
     console.error(e);
-    properties = getProperties().filter(p => p.status === "available" || !p.status);
+    properties=[];
     syncShortlistWithProperties();
     render();
   }

@@ -4,5 +4,5 @@
 // ANANYA PROPERTIES — customer contact settings
 window.ANANYA_CONTACT = {
   phone: "919731718383",
-  whatsapp: "919731718383"
+  whatsapp: "9731718383"
 };

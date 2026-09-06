@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin | ANANYA PROPERTIES</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+<header class="navbar">
+  <a class="brand" href="index.html" aria-label="ANANYA PROPERTIES home">
+    <span class="brand-emblem" aria-hidden="true"><img src="assets/ananya-properties-logo.png" alt=""></span>
+    <span class="brand-name"><strong>ANANYA</strong><small>PROPERTIES</small></span>
+  </a>
+  <span class="admin-label">PROPERTY MANAGEMENT • V15</span>
+  <div class="admin-nav-actions"><button class="logout-button" id="logout">Logout</button><a class="nav-cta" href="index.html">View Website</a></div>
+</header>
+
+<div id="login-screen" class="login-screen">
+  <form id="login-form" class="login-card">
+    <div class="login-mark">A</div>
+    <p class="eyebrow">ANANYA PROPERTIES</p>
+    <h1>Admin Login</h1>
+    <p class="login-help">Private property management area.</p>
+    <label>Email
+      <input id="login-email" type="email" autocomplete="username" required placeholder="admin@example.com">
+    </label>
+    <label>Password
+      <input id="login-password" type="password" autocomplete="current-password" required placeholder="••••••••">
+    </label>
+    <p id="login-error" class="login-error hidden">Incorrect email or password.</p>
+    <button class="button gold" type="submit">Login</button>
+    <small class="prototype-note">Secure Firebase Authentication protects this admin area.</small>
+  </form>
+</div>
+
+<main class="admin-main" id="admin-app">
+  <section class="admin-hero">
+    <div><p class="eyebrow">ADMIN PANEL</p><h1>Manage Properties</h1><p>Add, edit, publish and mark properties as rented — without touching the website code.</p></div>
+    <button class="button gold" id="add-property">+ Add Property</button>
+  </section>
+
+  <section class="quick-dashboard">
+    <div class="dashboard-heading">
+      <div><p class="eyebrow">TODAY AT A GLANCE</p><h2>Property Dashboard</h2></div>
+      <span id="dashboard-date"></span>
+    </div>
+    <div class="quick-grid">
+      <div><span>Available</span><strong id="dash-available">0</strong><small>Live listings</small></div>
+      <div><span>Under Discussion</span><strong id="dash-discussion">0</strong><small>Temporarily held</small></div>
+      <div><span>Rented</span><strong id="dash-rented">0</strong><small>Hidden from public listings</small></div>
+      <div><span>Total</span><strong id="dash-total">0</strong><small>All properties</small></div>
+    </div>
+  </section>
+
+  <section class="stats-grid">
+    <div><span>Total</span><strong id="stat-total">0</strong><small>Properties</small></div>
+    <div><span>Available</span><strong id="stat-available">0</strong><small>Live on website</small></div>
+    <div><span>Rented</span><strong id="stat-rented">0</strong><small>Archived</small></div>
+  </section>
+
+  <section class="admin-list">
+    <div class="list-head"><div><p class="eyebrow">LISTINGS</p><h2>All Properties</h2></div><select id="status-filter"><option value="all">All</option><option value="available">Available</option><option value="discussion">Under Discussion</option><option value="rented">Rented</option></select></div>
+    <div id="admin-list"></div>
+  </section>
+
+  <section class="admin-list enquiries-section">
+    <div class="list-head"><div><p class="eyebrow">CUSTOMER CONTACT</p><h2>Enquiries</h2></div><button class="button outline" id="refresh-enquiries" type="button">Refresh</button></div>
+    <div id="enquiries-list"><div class="admin-empty">Loading enquiries...</div></div>
+  </section>
+</main>
+
+<div class="admin-modal hidden" id="property-modal">
+  <div class="admin-backdrop" id="modal-backdrop"></div>
+  <form class="admin-form" id="property-form">
+    <button type="button" class="close-admin" id="close-modal">×</button>
+    <p class="eyebrow">PROPERTY</p>
+    <h2 id="form-title">Add Property</h2>
+    <input type="hidden" id="edit-id">
+
+    <div class="form-grid">
+      <label>Property Type
+        <select id="f-type" required>
+          <option value="ROOM">ROOM</option>
+          <option value="1 BHK">1 BHK</option>
+          <option value="2 BHK">2 BHK</option>
+          <option value="3 BHK">3 BHK</option>
+          <option value="4 BHK">4 BHK</option>
+          <option value="__custom__">Custom</option>
+        </select>
+        <input id="f-type-custom" class="conditional-input hidden" maxlength="60" placeholder="Enter your property type">
+      </label>
+      <label>Property Name<input id="f-title" required placeholder="Modern 1 BHK"></label>
+      <label>Location
+        <select id="f-location" required>
+          <option value="BTM Layout, 2nd Stage, Bangalore">BTM Layout, 2nd Stage, Bangalore</option>
+          <option value="__custom__">Custom Location</option>
+        </select>
+        <input id="f-location-custom" class="conditional-input hidden" maxlength="120" placeholder="Enter your location">
+      </label>
+      <label>Property Address
+        <input id="f-address" placeholder="Street / area / landmark">
+      </label>
+      <label>Google Maps Link
+        <input id="f-map-url" type="url" placeholder="Paste Google Maps share link">
+      </label>
+      <label>Rent / Month<input id="f-rent" type="number" min="0" required placeholder="15000"></label>
+      <label>Deposit<input id="f-deposit" required placeholder="₹60,000"></label>
+      <label>Furnishing
+        <select id="f-furnishing"><option value="furnished">Fully Furnished</option><option value="semi">Semi Furnished</option><option value="unfurnished">Unfurnished</option></select>
+      </label>
+      <label>Bedrooms<input id="f-bedrooms" placeholder="1 Bedroom"></label>
+      <label>Bathrooms<input id="f-bathrooms" placeholder="1 Bathroom"></label>
+      <label>Area<input id="f-area" placeholder="650 sq.ft"></label>
+      <label>Listing Status
+        <select id="f-status">
+          <option value="available">Available</option>
+          <option value="discussion">Under Discussion</option>
+          <option value="rented">Rented</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="amenity-editor">
+      <div class="amenity-head">
+        <div>
+          <p class="form-label">Amenities</p>
+          <p class="amenity-help">Select amenities for this property. Add new options or remove options anytime.</p>
+        </div>
+        <button type="button" class="button outline amenity-reset" id="reset-amenities">Reset Defaults</button>
+      </div>
+      <div class="checks" id="amenity-checks"></div>
+      <div class="amenity-add-row">
+        <input id="new-amenity" type="text" maxlength="50" placeholder="Add an amenity, e.g. Heat Pump">
+        <button type="button" class="button" id="add-amenity">＋ Add Amenity</button>
+      </div>
+    </div>
+
+    <label>Description<textarea id="f-description" rows="4" placeholder="Tell customers about the property..."></textarea></label>
+
+    <div class="media-upload">
+      <div class="media-upload-head">
+        <div><p class="form-label">Property Photos</p><p class="media-help">Select multiple photos directly from your phone or computer.</p></div>
+        <label class="upload-button">＋ Select Photos
+          <input id="f-photos" type="file" accept="image/*" multiple hidden>
+        </label>
+      </div>
+      <div id="photo-preview" class="upload-preview"></div>
+      <div id="existing-media" class="existing-media-grid"></div>
+      <div class="media-upload-head video-upload">
+        <div><p class="form-label">Property Video</p><p class="media-help">Select one property video.</p></div>
+        <label class="upload-button">＋ Select Video
+          <input id="f-video" type="file" accept="video/*" hidden>
+        </label>
+      </div>
+      <div id="video-preview" class="video-preview"></div>
+      <div id="existing-video" class="existing-video"></div>
+      <p class="media-storage-note">Photos and videos upload to Cloudinary. Removing media here removes it from this property listing.</p>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="button outline" id="cancel-form">Cancel</button>
+      <button type="submit" class="button gold">Save Property</button>
+    </div>
+  </form>
+</div>
+
+<script src="data.js"></script>
+<script src="firebase-config.js"></script>
+<script src="cloudinary-config.js"></script>
+<script src="cloudinary.js"></script>
+<script src="cloud-data.js"></script>
+<script src="media.js"></script>
+<script src="firebase-core.js"></script>
+<script src="auth.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

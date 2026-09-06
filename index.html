@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ANANYA PROPERTIES - Rental properties in BTM Layout, Bangalore.">
+  <title>ANANYA PROPERTIES | BTM Layout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+  <a class="brand" href="index.html" aria-label="ANANYA PROPERTIES home">
+    <span class="brand-emblem" aria-hidden="true">
+      <img src="assets/ananya-properties-logo.png" alt="">
+    </span>
+    <span class="brand-name">
+      <strong>ANANYA</strong>
+      <small>PROPERTIES</small>
+    </span>
+  </a>
+  <nav>
+    <a href="#properties">Properties</a>
+    <a href="#why-us">Why Us</a>
+    <a href="#how-it-works">How It Works</a>
+  </nav>
+  <button class="shortlist-nav" id="shortlist-nav" type="button">♡ Shortlisted <span id="shortlist-count">0</span></button>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-brand-card" aria-hidden="true">
+      <img src="assets/ananya-properties-logo.png" alt="">
+    </div>
+    <div class="hero-content">
+      <p class="eyebrow">ANANYA PROPERTIES • BTM LAYOUT</p>
+      <h1>Find your next<br><span>home in BTM.</span></h1>
+      <p>Quality spaces for rent, tailored to your lifestyle.</p>
+      <a class="button gold" href="#properties">Explore Properties</a>
+    </div>
+  </section>
+
+  <section class="search-panel" aria-label="Property search">
+    <div>
+      <label for="search">Search</label>
+      <input id="search" type="search" placeholder="Search property or landmark...">
+    </div>
+    <div>
+      <label for="type">Property Type</label>
+      <select id="type">
+        <option value="all">All Types</option>
+        <option value="room">Room</option>
+        <option value="1bhk">1 BHK</option>
+        <option value="2bhk">2 BHK</option>
+        <option value="3bhk">3 BHK</option>
+        <option value="4bhk">4 BHK</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div>
+      <label for="furnishing">Furnishing</label>
+      <select id="furnishing">
+        <option value="all">Any</option>
+        <option value="furnished">Furnished</option>
+        <option value="semi">Semi Furnished</option>
+        <option value="unfurnished">Unfurnished</option>
+      </select>
+    </div>
+    <div>
+      <label for="budget">Budget</label>
+      <select id="budget">
+        <option value="all">Any Budget</option>
+        <option value="under10">Under ₹10K</option>
+        <option value="10to15">₹10K – ₹15K</option>
+        <option value="15to20">₹15K – ₹20K</option>
+        <option value="20to30">₹20K – ₹30K</option>
+        <option value="30to40">₹30K – ₹40K</option>
+        <option value="40to50">₹40K – ₹50K</option>
+        <option value="above50">Above ₹50K</option>
+      </select>
+    </div>
+    <div>
+      <label for="sort">Sort</label>
+      <select id="sort">
+        <option value="newest">Newest</option>
+        <option value="low">Rent: Low to High</option>
+        <option value="high">Rent: High to Low</option>
+      </select>
+    </div>
+  </section>
+
+  <section id="properties" class="section">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">AVAILABLE NOW</p>
+        <h2>Properties in BTM Layout</h2>
+      </div>
+      <span id="result-count" class="result-count"></span>
+    </div>
+    <div id="property-grid" class="property-grid"></div>
+    <div id="empty-state" class="empty hidden">
+      <div>⌕</div>
+      <h3>No matching properties</h3>
+      <p>Try changing your filters or search.</p>
+      <button class="button outline" id="clear-filters">Clear Filters</button>
+    </div>
+  </section>
+
+  <section id="shortlist" class="shortlist-section section hidden">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">YOUR PICKS</p>
+        <h2>Shortlisted Properties</h2>
+      </div>
+      <button class="button outline" id="close-shortlist" type="button">Back to All</button>
+    </div>
+    <div id="shortlist-grid" class="property-grid"></div>
+    <div id="shortlist-empty" class="empty">
+      <div>♡</div>
+      <h3>Your shortlist is empty</h3>
+      <p>Tap the heart on a property to save it here.</p>
+    </div>
+  </section>
+
+  <section id="why-us" class="dark-section section">
+    <p class="eyebrow">WHY ANANYA PROPERTIES</p>
+    <h2>Local knowledge.<br>Better rentals.</h2>
+    <div class="feature-grid">
+      <article><span>01</span><h3>BTM Focused</h3><p>We concentrate on BTM Layout instead of sending you across the whole city.</p></article>
+      <article><span>02</span><h3>Clear Details</h3><p>See rent, deposit, furnishing, amenities and availability before enquiring.</p></article>
+      <article><span>03</span><h3>Easy Enquiry</h3><p>Shortlist a property and connect directly for the next step.</p></article>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="section steps">
+    <p class="eyebrow">SIMPLE PROCESS</p>
+    <h2>From search to keys.</h2>
+    <div class="step-grid">
+      <div><b>01</b><h3>Browse</h3><p>Explore currently available properties.</p></div>
+      <div><b>02</b><h3>Shortlist</h3><p>Open a listing and check all the important details.</p></div>
+      <div><b>03</b><h3>Enquire</h3><p>Send an enquiry and get in touch with our team.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div><strong>ANANYA PROPERTIES</strong><span>BTM Layout, Bangalore</span></div>
+</footer>
+
+<script src="data.js"></script>
+<script src="firebase-config.js"></script>
+<script src="cloud-data.js"></script>
+<script src="firebase-core.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

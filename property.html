@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Details | ANANYA PROPERTIES</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+  <a class="brand" href="index.html" aria-label="ANANYA PROPERTIES home">
+    <span class="brand-emblem" aria-hidden="true">
+      <img src="assets/ananya-properties-logo.png" alt="">
+    </span>
+    <span class="brand-name">
+      <strong>ANANYA</strong>
+      <small>PROPERTIES</small>
+    </span>
+  </a>
+  <nav><a href="index.html#properties">Properties</a><a href="index.html#why-us">Why Us</a><a href="index.html#how-it-works">How It Works</a></nav>
+</header>
+
+<main class="details-page">
+  <div class="details-watermark" aria-hidden="true">
+    <img src="assets/ananya-properties-logo.png" alt="">
+  </div>
+  <a class="back-link" href="index.html#properties">← Back to properties</a>
+
+  <div class="details-layout">
+    <section class="gallery">
+      <img id="main-image" class="main-media" src="" alt="">
+      <div id="thumbs" class="thumbs"></div>
+    </section>
+
+    <section class="details-copy">
+      <p id="type" class="eyebrow"></p>
+      <h1 id="title"></h1>
+      <p id="location" class="details-location"></p>
+      <p id="address" class="details-address"></p>
+      <div id="price" class="details-price"></div>
+
+      <div class="details-meta">
+        <div class="detail-chip"><small>Property</small><strong id="property-size"></strong></div>
+        <div class="detail-chip"><small>Furnishing</small><strong id="furnishing"></strong></div>
+        <div class="detail-chip"><small>Bathrooms</small><strong id="bathrooms"></strong></div>
+        <div class="detail-chip"><small>Area</small><strong id="area"></strong></div>
+        <div class="detail-chip"><small>Deposit</small><strong id="deposit"></strong></div>
+        <div class="detail-chip"><small>Status</small><strong>Available</strong></div>
+      </div>
+
+      <h3>About this property</h3>
+      <p id="description"></p>
+
+      <h3>Amenities</h3>
+      <div id="amenities" class="meta"></div>
+
+      <div id="enquire" class="detail-actions">
+        <button class="button outline" id="detail-heart" type="button">♡ Save to shortlist</button>
+        <button class="button gold" id="whatsapp" type="button">Enquire on WhatsApp</button>
+        <button class="button outline" id="call-now" type="button">Call Now</button>
+        <button class="button outline" id="enquire-form-button" type="button">Send an Enquiry</button>
+      </div>
+
+      <div id="property-map-section" class="property-map-section hidden">
+        <div>
+          <p class="eyebrow">PROPERTY LOCATION</p>
+          <h3>Find this property</h3>
+          <p id="map-address" class="map-address"></p>
+        </div>
+        <a id="map-link" class="button outline" href="#" target="_blank" rel="noopener noreferrer">📍 Open in Google Maps</a>
+      </div>
+      <div class="notice">Choose WhatsApp, call us, or send an enquiry if you prefer a callback.</div>
+    </section>
+  </div>
+
+  <section class="video-box hidden" id="property-video-section">
+    <p class="eyebrow">PROPERTY VIDEO</p>
+    <h2>Take a virtual look.</h2>
+    <div class="video-placeholder">
+      <div>
+        <div class="play">▶</div>
+        <p>Property video will be uploaded here</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="enquiry-modal hidden" id="enquiry-modal" aria-hidden="true">
+  <div class="enquiry-backdrop" id="enquiry-backdrop"></div>
+  <form class="enquiry-card" id="enquiry-form">
+    <button type="button" class="enquiry-close" id="enquiry-close" aria-label="Close enquiry form">×</button>
+    <p class="eyebrow">ANANYA PROPERTIES</p>
+    <h2>Send an Enquiry</h2>
+    <p class="enquiry-subtitle">Tell us a little about yourself and we'll get back to you about this property.</p>
+    <div class="enquiry-property">
+      <span class="enquiry-property-icon">⌂</span>
+      <div><strong id="enquiry-property-title">Property</strong><span>We'll use these details to help you faster.</span></div>
+    </div>
+    <div class="enquiry-fields">
+      <label class="enquiry-field">Name<input id="enquiry-name" required maxlength="80" autocomplete="name" placeholder="Your full name"></label>
+      <label class="enquiry-field">Phone Number<input id="enquiry-phone" type="tel" required maxlength="20" autocomplete="tel" inputmode="tel" placeholder="Your phone number"></label>
+      <label class="enquiry-field full">Message<textarea id="enquiry-message" rows="4" maxlength="500" placeholder="I'd like to know more about this property, availability and rental details..."></textarea></label>
+    </div>
+    <p class="enquiry-status" id="enquiry-status" aria-live="polite"></p>
+    <div class="enquiry-actions">
+      <button type="button" class="button outline" id="enquiry-cancel">Cancel</button>
+      <button type="submit" class="button gold">Send Enquiry</button>
+    </div>
+  </form>
+</div>
+
+<footer>
+  <div><strong>ANANYA PROPERTIES</strong><span>BTM Layout, Bangalore</span></div>
+</footer>
+
+<script src="data.js"></script>
+<script src="contact-config.js"></script>
+<script src="firebase-config.js"></script>
+<script src="cloud-data.js"></script>
+<script src="firebase-core.js"></script>
+<script src="property.js"></script>
+</body>
+</html>

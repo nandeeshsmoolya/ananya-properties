@@ -1,0 +1,11 @@
+const DEFAULT_PROPERTIES = [
+  {id:"demo-1", type:"1 BHK", key:"1bhk", title:"Modern 1 BHK", location:"BTM 2nd Stage, Bangalore", rent:15000, deposit:"₹60,000", furnishing:"furnished", furnishingLabel:"Fully Furnished", bedrooms:"1 Bedroom", bathrooms:"1 Bathroom", area:"650 sq.ft", amenities:["Parking","Wi-Fi","Power Backup","Garbage Management"], newest:5, status:"available", description:"A clean, modern 1 BHK suitable for working professionals. Close to daily essentials, restaurants and public transport.", gallery:["https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"]},
+  {id:"demo-2", type:"ROOM", key:"room", title:"Premium Rental Room", location:"BTM Layout, 2nd Stage, Bangalore", rent:10000, deposit:"₹40,000", furnishing:"semi", furnishingLabel:"Semi Furnished", bedrooms:"1 Room", bathrooms:"Attached Bath", area:"250 sq.ft", amenities:["Wi-Fi","Power Backup","Water Supply","Garbage Management"], newest:4, status:"available", description:"Comfortable rental room in a convenient BTM location, ideal for students and working professionals.", gallery:["https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85"]},
+  {id:"demo-3", type:"2 BHK", key:"2bhk", title:"Spacious 2 BHK", location:"BTM 2nd Stage, Bangalore", rent:22000, deposit:"₹90,000", furnishing:"unfurnished", furnishingLabel:"Unfurnished", bedrooms:"2 Bedrooms", bathrooms:"2 Bathrooms", area:"1,050 sq.ft", amenities:["Parking","Balcony","Lift","Garbage Management"], newest:3, status:"available", description:"Spacious 2 BHK with good natural light and practical access to the main BTM areas.", gallery:["https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85"]}
+];
+function getProperties(){
+  try { return JSON.parse(localStorage.getItem("ananyaProperties")||"null") || DEFAULT_PROPERTIES.map(x=>({...x})); }
+  catch { return DEFAULT_PROPERTIES.map(x=>({...x})); }
+}
+function saveProperties(list){ localStorage.setItem("ananyaProperties",JSON.stringify(list)); }
+function formatRent(n){ return new Intl.NumberFormat("en-IN",{style:"currency",currency:"INR",maximumFractionDigits:0}).format(Number(n)) + " / month"; }
